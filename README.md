@@ -79,6 +79,6 @@ examples/                     tiny sample projects to try it on
 
 ## Author
 
-Made by Damian ([HarnasDGE](https://github.com/HarnasDGE)) · [LinkedIn](LINKEDIN_URL)
+Made by Damian Gębala ([HarnasDGE](https://github.com/HarnasDGE)) · [LinkedIn](https://www.linkedin.com/in/damian-g%C4%99bala-15822725a) · [GDamian.pl](https://gdamian.pl)
 
 MIT License.
