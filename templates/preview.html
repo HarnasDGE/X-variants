@@ -5,8 +5,8 @@
   HOW TO FILL THIS IN (for Claude):
   1. Copy this file to .variants/<target-name>-variants.html in the user's project.
   2. Replace __TARGET_NAME__ (2 places: <title> and data-target on <body>).
-  3. Delete the two EXAMPLE variants below and add one <template class="variant"> per variant
-     inside the round <section>. Attributes:
+  3. Find the marker line "VARIANTS: START" further down. Delete the two EXAMPLE variants there
+     and add one template element with class "variant" per variant inside the round section. Attributes:
        data-n      label shown in the big badge: "1".."10" in round 1, "R2-1".."R2-4" in round 2
        data-name   2-4 word name, e.g. "Editorial serif"
        data-note   one line on what makes it different
@@ -15,8 +15,8 @@
      a <style> block, and the markup. It is rendered inside its own iframe, so write plain,
      unprefixed CSS — nothing leaks between variants. Style `body` to set the canvas background.
      Avoid height:100vh on the outer element (frames auto-size to content).
-  4. New round = new <section class="round" data-round="2" data-title="Round 2 · Layout 4 × colors 7">
-     AFTER the previous one. Keep old rounds: they become tabs, the latest opens by default.
+  4. New round = a new section element with class "round", data-round="2" and
+     data-title="Round 2 · Layout 4 × colors 7", placed AFTER the previous round's section. Keep old rounds: they become tabs, the latest opens by default.
   5. Optional: put the axes table in an HTML comment inside each round for your own reference.
   No build step, no dependencies. Opens with a double click.
 -->

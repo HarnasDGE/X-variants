@@ -64,8 +64,10 @@ Read `references/variant-axes.md` before designing. In short, the axes are: **la
 
 - Every pair of variants differs on at least 2 axes, and no two variants share both the same layout and the same visual style.
 - Spread across the space: include at least one safe/conventional option, one bold one, one dark one and one unexpected one. The user often doesn't know they like something until they see it.
-- Keep fixed constraints identical in all variants (the brand blue stays the exact hex everywhere).
-- Before rendering, write a short axes table (in your reply or as an HTML comment in the preview file) — it's what makes the mix step precise:
+- Keep fixed constraints identical in all variants (the brand blue stays the exact hex everywhere). Derived shades for hover/pressed states are fine; a different "close enough" blue is not.
+- Small decorative labels (a brand name already on the page, "01", "FIG. 1") are fine; invented claims, stats, testimonials or features are not, because the user would be judging content that doesn't exist.
+- If the target spans several sections (e.g. hero + pricing), variants may rearrange how they sit together (side by side, overlapping), but every section and its content stays.
+- Before rendering, write a short axes table as an HTML comment in the round inside the preview file — it's what makes the mix step precise. In your reply, a one-line-per-variant list is enough:
 
 ```
 #  Name              Layout        Style        Type            Color            Density
@@ -80,6 +82,7 @@ Give each variant a number, a 2–4 word name ("4 · Editorial serif") and one l
 - Responsive: works at 375px and 1280px, no horizontal scroll, no overlapping text.
 - Readable: WCAG AA contrast for body text (4.5:1), including on gradients and dark variants.
 - Real content, real states: hover/focus styles on interactive elements.
+- Check it, don't assume it: if a headless browser is available (e.g. Playwright), screenshot the preview at desktop and mobile and look. Otherwise review each variant's CSS for fixed widths, missing wrap/stacking rules under ~600px and low-contrast text.
 - No dependencies beyond Google Fonts or a CDN the project already uses. No external images unless the project already has them (use CSS shapes, gradients, inline SVG or emoji-free icon substitutes instead).
 
 ## 5. Render the comparison

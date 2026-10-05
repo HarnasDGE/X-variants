@@ -4,7 +4,7 @@
 
 "Make it more modern and professional" never works, and it's not the model's fault: I was asking it for a vision I didn't have myself. So now, for every vague UI edit, I get 10 genuinely different variants side by side, point at what I like ("layout from 4, colors from 7"), and iterate only on the picks until one is left. This Claude skill does that habit for me: I prompt like always, and it notices the vague request and offers variants first.
 
-![10 variants side by side](docs/demo.gif)
+![10 variants side by side](docs/demo.png)
 
 ## Install
 
