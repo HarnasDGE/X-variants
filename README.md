@@ -11,7 +11,7 @@
 **Claude Code — personal (all projects):**
 
 ```bash
-git clone https://github.com/HarnasDGE/X-variants ~/.claude/skills/pick-dont-describe
+git clone https://github.com/HarnasDGE/x-variants ~/.claude/skills/pick-dont-describe
 ```
 
 **Claude Code — one project:** clone into `.claude/skills/pick-dont-describe` in your repo instead.
