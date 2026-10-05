@@ -22,14 +22,15 @@ Don't use it when:
 - It's a bug fix, accessibility fix, refactor or logic change, even if it touches UI files ("fix the overlap on mobile" is not a style question).
 - The user said "just do it", "one version", "no options", "no variants", or declined variants earlier in this session for this element. Respect that; asking again is nagging.
 - The project has a strict design system and the request is answered by applying it. Apply it and say which rules you used.
+- It's a new feature or behavior ("add a dark mode toggle", "add a FAQ section"). Build it. If one part of it is an open style call (the dark palette, the look of the new section), you may offer variants for that part only.
 
-**Borderline:** vague request + one or two concrete constraints ("more modern, keep our brand blue") → use the flow and treat each constraint as fixed in every variant. If the user gives a reference ("like Linear's site") the request is no longer vague about direction — usually just do it; offer variants only if they also ask for options.
+**Borderline:** vague request + one or two concrete constraints ("more modern, keep our brand blue") → use the flow and treat each constraint as fixed in every variant. If the user gives a reference ("like Linear's site") the request is no longer vague about direction — just do it, without tacking on a variants offer. Explicit constraints from the user or the brand (colors, logo) still beat the reference's own.
 
 See `references/trigger-examples.md` for ~30 worked trigger / don't-trigger / borderline cases when you're unsure.
 
 ## 2. Ask once, before touching code
 
-Ask exactly one short question, then stop and wait. Do not edit files, read half the repo, or start generating first: if the user says "no", all of that is wasted, and the point of asking is to keep the user in control of their time.
+Ask exactly one short question, then stop and wait. Do not edit files or start generating first: if the user says "no", that work is wasted, and the point of asking is to keep the user in control of their time. A quick look to decide *whether* to ask is fine (open the target file, check for a design system or tokens that already answer the request); the deep read happens in step 3.
 
 Use the structured question tool if your environment has one (e.g. `AskUserQuestion`), otherwise plain text:
 
@@ -40,10 +41,11 @@ Use the structured question tool if your environment has one (e.g. `AskUserQuest
 >
 > (Default is 10 variants — say e.g. "5" for fewer.)
 
+- Adapt the wording, don't recite it: answer in the user's language, mention constraints you'll keep ("#1D4ED8 stays in every variant"), and if the target is unclear ("make it nicer" with several candidates), fold the scope into the same question ("the whole page, or just the pricing card?") rather than asking twice.
 - Accept loose answers: "yes", "1", "go", "8 variants", "artifact, 6" all work.
 - If the user chooses 3 / "no": do a normal single edit, and don't offer variants again for this element in this session.
 - If the user's original message already answered it ("give me 5 options in a preview"), skip the question.
-- Offer option 2 only if you can actually publish an artifact in this environment (claude.ai, or Claude Code with an artifact/publish tool). Otherwise list just 1 and 3.
+- Offer option 2 only if you can actually publish an artifact here: on claude.ai, or when a tool for publishing artifacts/pages is in your tool list. Otherwise list just 1 and 3 — offering something you can't deliver costs the user a round-trip.
 
 ## 3. Understand the target
 

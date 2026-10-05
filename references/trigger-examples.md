@@ -41,6 +41,6 @@ Use when it's unclear whether to offer variants. The test: **is the user asking 
 | 23 | "redesign the hero, just one version please" | User opted out of options explicitly. |
 | 24 | "match the pricing page to this Figma: <link>" | Reference defines the direction. |
 | 25 | "make the buttons consistent with our design system" | Answered by the design system: apply it and say which rules. |
-| 26 | "make it look like stripe.com's pricing page" | Clear reference; do it (offer variants only if they also ask for options). |
+| 26 | "make it look like stripe.com's pricing page" | Clear reference; do it. Brand colors the user asked to keep still win over the reference's. |
 | 27 | "make the modal more modern" — after the user said "no variants" earlier this session | Respect the earlier opt-out. |
-| 28 | "add a dark mode toggle" | New feature/logic, not a style call. (But "make dark mode nicer" would trigger.) |
+| 28 | "add a dark mode toggle" | New feature; build it. If the dark palette is an open question, variants for the palette only are fine. ("make dark mode nicer" would trigger.) |
