@@ -1,9 +1,9 @@
 ---
-name: pick-dont-describe
+name: x-variants
 description: Turns vague UI style requests into a pick-from-variants loop. Use whenever the user asks to change how a UI looks without saying how — "make it more modern", "more professional", "cleaner", "nicer", "make it pop", "redesign this", "improve the look", "it looks boring", "refresh the hero", "zrób to ładniej" (any language) — for any component, section, page, landing page, dashboard, form or email template, in any stack (HTML/CSS, React, Vue, Svelte, Tailwind, SwiftUI, Flutter...). Instead of guessing one look, it asks one short question first, then renders ~10 genuinely different variants side by side in a local HTML preview (or a shareable artifact) so the user can pick and mix ("layout from 4, colors from 7") and narrow down before the real code is touched. Picking is easier than describing. Skip it for concrete edits (exact colors, sizes, positions, a Figma to match), bug/accessibility fixes, refactors, or when the user said "just do it" / "one version".
 ---
 
-# Pick, don't describe
+# x-variants — pick, don't describe
 
 "Make it more modern" rarely works on the first try. The model is not the weak link: the user is asking for a vision they don't have yet, so any single guess is a coin flip and the follow-ups ("no, more... you know") go in circles. People can't describe taste, but they recognise it instantly. So: show ~10 truly different options, let the user point ("layout from 4, colors from 7"), refine only the picks, and apply the winner to the real code.
 

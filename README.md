@@ -1,4 +1,4 @@
-# pick-dont-describe
+# x-variants
 
 **Don't describe a vision you don't have. Pick one.**
 
@@ -11,10 +11,10 @@
 **Claude Code — personal (all projects):**
 
 ```bash
-git clone https://github.com/HarnasDGE/x-variants ~/.claude/skills/pick-dont-describe
+git clone https://github.com/HarnasDGE/x-variants ~/.claude/skills/x-variants
 ```
 
-**Claude Code — one project:** clone into `.claude/skills/pick-dont-describe` in your repo instead.
+**Claude Code — one project:** clone into `.claude/skills/x-variants` in your repo instead.
 
 **claude.ai:** download this repo as a ZIP (Code → Download ZIP), then upload it in *Settings → Capabilities → Skills*.
 

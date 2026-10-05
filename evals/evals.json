@@ -1,5 +1,5 @@
 {
-  "skill_name": "pick-dont-describe",
+  "skill_name": "x-variants",
   "evals": [
     {"id": 1, "prompt": "make the pricing card more modern", "files": ["examples/react-tailwind"], "expected_output": "Asks the one variants question; after '1', creates .variants/pricing-card-variants.html with 10 clearly different variants; real component untouched.",
      "assertions": ["Asks before editing code", "Preview file has 10 variants", "No two variants share both layout and visual style", "Real content (Pro, $29, 4 features, Start free trial) in every variant", "Opens without build step", "Mobile toggle works"]},
