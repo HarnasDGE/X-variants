@@ -24,7 +24,7 @@ Don't use it when:
 - The project has a strict design system and the request is answered by applying it. Apply it and say which rules you used.
 - It's a new feature or behavior ("add a dark mode toggle", "add a FAQ section"). Build it. If one part of it is an open style call (the dark palette, the look of the new section), you may offer variants for that part only.
 
-**Borderline:** vague request + one or two concrete constraints ("more modern, keep our brand blue") → use the flow and treat each constraint as fixed in every variant. If the user gives a reference ("like Linear's site") the request is no longer vague about direction — just do it, without tacking on a variants offer. Explicit constraints from the user or the brand (colors, logo) still beat the reference's own.
+**Borderline:** vague request + one or two concrete constraints ("more modern, keep our brand blue") → use the flow and treat each constraint as fixed in every variant. If the user gives a reference — an outside site ("like Linear's") or something in the project ("match the header") — the request is no longer vague about direction — just do it, without tacking on a variants offer. Explicit constraints from the user or the brand (colors, logo) still beat the reference's own.
 
 See `references/trigger-examples.md` for ~30 worked trigger / don't-trigger / borderline cases when you're unsure.
 
@@ -44,7 +44,8 @@ Use the structured question tool if your environment has one (e.g. `AskUserQuest
 - Adapt the wording, don't recite it: answer in the user's language, mention constraints you'll keep ("#1D4ED8 stays in every variant"), and if the target is unclear ("make it nicer" with several candidates), fold the scope into the same question ("the whole page, or just the pricing card?") rather than asking twice.
 - Accept loose answers: "yes", "1", "go", "8 variants", "artifact, 6" all work.
 - If the user chooses 3 / "no": do a normal single edit, and don't offer variants again for this element in this session.
-- If the user's original message already answered it ("give me 5 options in a preview"), skip the question.
+- If the user's original message already answered it ("give me 5 options in a preview", "show me a few options"), skip the question and fill gaps with defaults: local preview, 10 variants ("a few" ≈ 4–5).
+- If they asked for your opinion ("it's meh, thoughts?"), give a 2–3 line take on what's weak, then offer variants in the same message.
 - Offer option 2 only if you can actually publish an artifact here: on claude.ai, or when a tool for publishing artifacts/pages is in your tool list. Otherwise list just 1 and 3 — offering something you can't deliver costs the user a round-trip.
 
 ## 3. Understand the target
@@ -54,6 +55,7 @@ Read the actual code before designing — variants that ignore the real componen
 - Find the component/page and its surroundings: framework, styling approach (Tailwind, CSS modules, styled-components, plain CSS, SwiftUI modifiers...), design tokens/CSS variables, fonts already loaded, brand colors, icon set.
 - Collect the **real content**: exact texts, prices, labels, data, image/icon references. Variants differ in design, not content. Lorem ipsum makes the user judge a different thing than what ships.
 - Write down **fixed constraints**: things the user asked to keep, brand color, logo, accessibility needs, required elements (e.g. a legal line, the 3 pricing tiers).
+- Note the **page context**: the background and surroundings the element really sits on. Render component variants on that real background by default, so "colors from 7" means the component's colors, not a page backdrop that won't ship. If a variant deliberately changes the surrounding section too, say so in its note.
 - For non-web stacks (SwiftUI, Flutter, native), render an HTML approximation in the preview and say so; the goal is to choose a direction, not to pixel-match the platform.
 
 ## 4. Generate variants that are actually different
@@ -65,7 +67,7 @@ Read `references/variant-axes.md` before designing. In short, the axes are: **la
 - Every pair of variants differs on at least 2 axes, and no two variants share both the same layout and the same visual style.
 - Spread across the space: include at least one safe/conventional option, one bold one, one dark one and one unexpected one. The user often doesn't know they like something until they see it.
 - Keep fixed constraints identical in all variants (the brand blue stays the exact hex everywhere). Derived shades for hover/pressed states are fine; a different "close enough" blue is not.
-- Small decorative labels (a brand name already on the page, "01", "FIG. 1") are fine; invented claims, stats, testimonials or features are not, because the user would be judging content that doesn't exist.
+- Small decorative or structural labels (a brand name already on the page, "Includes", "01") are fine; invented claims, stats, testimonials or features are not, because the user would be judging content that doesn't exist.
 - If the target spans several sections (e.g. hero + pricing), variants may rearrange how they sit together (side by side, overlapping), but every section and its content stays.
 - Before rendering, write a short axes table as an HTML comment in the round inside the preview file — it's what makes the mix step precise. In your reply, a one-line-per-variant list is enough:
 
@@ -93,7 +95,7 @@ Give each variant a number, a 2–4 word name ("4 · Editorial serif") and one l
 2. Fill it in following the comments at the top of the template: set the title, then add one `<template class="variant">` block per variant inside the round. Each variant is self-contained HTML + `<style>`; the template renders each in its own iframe, so styles never leak between variants and you can write plain, unprefixed CSS.
 3. Use plain HTML + CSS (+ minimal vanilla JS). It must open with a double click, without the project running and with no build step. If the project uses Tailwind, either write plain CSS (preferred — keeps variants comparable) or load the Tailwind Play CDN inside that variant.
 4. The template already provides: sticky header with instructions, grid/list toggle, desktop/mobile width toggle (all at once and per variant), click-to-expand full view, round tabs, and a "pick" bar that builds a reply like "layout from 4, colors from 7" for the user to copy.
-5. If `.variants/` isn't in `.gitignore`, suggest adding it (don't edit `.gitignore` without asking).
+5. If the project is a git repo and `.variants/` isn't ignored, suggest adding it to `.gitignore` (don't edit it without asking).
 6. Give the user the file path and try to open it (`open` on macOS, `xdg-open` on Linux, `start` on Windows). In a remote/headless environment, say where the file is instead; offer a tiny static server (`python3 -m http.server -d .variants 8000`) only if the user needs to view it from another device.
 
 ### Artifact
@@ -123,6 +125,7 @@ If the answer is ambiguous in a way that changes the result, ask one clarifying 
 ## 8. Apply to the real code
 
 - Implement the chosen variant in the real component using the project's conventions: its framework, styling approach, tokens/variables, existing utilities and components. Translate, don't paste — preview CSS was written for comparison, not for the codebase. In a Tailwind project, use Tailwind classes and theme values; with CSS variables, reuse or add tokens rather than hardcoding hex values.
+- If the winner uses a font, image or dependency the project doesn't load yet, add it the way the project loads such things (e.g. `next/font`, a `<link>` in the layout, the existing font setup) or ask if that's a bigger change — don't silently drop it, or the result won't look like what the user picked.
 - Preserve behavior: props, handlers, data bindings, accessibility attributes, tests and responsive behavior that already existed.
 - Show a short summary of what changed (files + the main visual decisions).
 - Ask whether to delete `.variants/`. Default: delete it once the final version is applied, unless the user wants to keep it.
