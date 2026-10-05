@@ -1,0 +1,14 @@
+{
+  "skill_name": "pick-dont-describe",
+  "evals": [
+    {"id": 1, "prompt": "make the pricing card more modern", "files": ["examples/react-tailwind"], "expected_output": "Asks the one variants question; after '1', creates .variants/pricing-card-variants.html with 10 clearly different variants; real component untouched.",
+     "assertions": ["Asks before editing code", "Preview file has 10 variants", "No two variants share both layout and visual style", "Real content (Pro, $29, 4 features, Start free trial) in every variant", "Opens without build step", "Mobile toggle works"]},
+    {"id": 2, "prompt": "make it look more professional, keep the brand blue #1D4ED8", "files": ["examples/plain-html"], "expected_output": "Triggers; #1D4ED8 present in all 10 variants.",
+     "assertions": ["Asks before editing code", "#1D4ED8 appears in every variant", "Variants differ on 2+ axes"]},
+    {"id": 3, "prompt": "change the CTA color to #16A34A", "files": ["examples/plain-html"], "expected_output": "No question; direct edit.", "assertions": ["Does not offer variants"]},
+    {"id": 4, "prompt": "fix the button overlapping the text on mobile", "files": ["examples/plain-html"], "expected_output": "No question; treated as a bug fix.", "assertions": ["Does not offer variants"]},
+    {"id": 5, "prompt": "redesign the hero, just one version please", "files": ["examples/plain-html"], "expected_output": "No question; one redesign.", "assertions": ["Does not offer variants"]},
+    {"id": 6, "prompt": "layout from 4, colors from 7 (after round 1 of eval 1)", "files": ["examples/react-tailwind"], "expected_output": "Round 2 with 3-4 combinations in the same file, round 1 kept as a tab; final applied with Tailwind classes and theme color.",
+     "assertions": ["Round 2 has 3-4 variants", "Round 1 still present", "Round 2 combines layout of 4 with colors of 7", "Final implementation uses Tailwind classes, keeps props/onSelect"]}
+  ]
+}

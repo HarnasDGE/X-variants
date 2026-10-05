@@ -1,0 +1,49 @@
+:root {
+  --brand: #1D4ED8;
+  --text: #222;
+  --muted: #666;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+}
+
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: #eee;
+}
+
+.hero h1 {
+  font-size: 32px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+}
+
+.pricing {
+  padding: 40px 20px;
+}
+
+.pricing-card {
+  max-width: 300px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.price {
+  font-size: 28px;
+}
+
+.price span {
+  font-size: 14px;
+  color: var(--muted);
+}
